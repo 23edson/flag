@@ -4,7 +4,7 @@
 // Class:         CSCI 4250
 // Due Date:      9/4/07
 // Instructor:    Dr. Hankins
-//
+//gcc somefile.c -lGLU -lGL -lglut
 // The purpose of this program is to introduce the student
 // to OpenGL and GLUT.  The program opens a window and on 
 // a black background, it draws a multicolored circle.
@@ -22,6 +22,11 @@
 #include <cstdlib>
 #include <GL/glut.h>
 #include <cmath>
+#include <stdio.h>
+
+static int slices = 30;
+static int stacks = 30;
+
 using namespace std;
 
 //
@@ -53,6 +58,33 @@ void mydisplay()
 	
 	// Desenha um quadrado preenchido com a cor corrente
 	
+	
+	
+	
+	
+	
+	
+	glColor3f(0.6f,0.6f,0.6f);//mastro
+	glBegin(GL_QUADS);
+					glVertex2f(-1.0, 1.1);
+					glVertex2f(-1.0, -1.7);
+	// Especifica que a cor corrente � azul
+	//glColor3f(0.0f, 0.0f, 1.0f);
+					glVertex2f(-0.95, -1.7);
+					glVertex2f(-0.95, 1.1);
+	glEnd();
+	glColor3f(0.19125f,0.0735f,0.0225f);
+	glPushMatrix(); //meio cima
+	glTranslatef(-0.93,0.5,0.0);
+	glRotated(180,0.001,0.55,-0.5);
+	glutSolidTorus(0.022,0.06,slices,stacks);
+	glPopMatrix();
+	
+	glPushMatrix(); //meio baixo
+	glTranslatef(-0.93,0,0.0);
+	glRotated(180,0.001,0.55,-0.5);
+	glutSolidTorus(0.022,0.06,slices,stacks);
+	glPopMatrix();
 	
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_QUADS);
@@ -86,15 +118,18 @@ void mydisplay()
 					glVertex2f(1.0, -0.11);
 					glEnd();
 					
-	glColor3f(0.6f,0.6f,0.6f);//mastro
-	glBegin(GL_QUADS);
-					glVertex2f(-1.0, 1.1);
-					glVertex2f(-1.0, -1.7);
-	// Especifica que a cor corrente � azul
-	//glColor3f(0.0f, 0.0f, 1.0f);
-					glVertex2f(-0.95, -1.7);
-					glVertex2f(-0.95, 1.1);
-					glEnd();
+	
+	glColor3f(0.19125f,0.0735f,0.0225f);
+	glPushMatrix(); //topo do mastro
+	glTranslatef(-0.977,1.07,0.0);
+	glutSolidTorus(0.035,0.01,slices,stacks);
+	glPopMatrix();
+	
+	glPushMatrix(); //baixo do mastro
+	glTranslatef(-0.977,-1.7,0.0);
+	glutSolidTorus(0.0399,0.01,slices,stacks);
+	glPopMatrix();
+					
 	glTranslatef(0.0,0.25,0.0);
 	glColor3f(1.0f, 0.3f, 0.0f);
 	float radius = 0.3f;
@@ -123,11 +158,15 @@ void mydisplay()
 // sets the background color, the fill
 // color, and sets up the "real" world
 // coordinate system.
+void keyboard(unsigned char key, int x, int y){
+	if(key==27) exit(0);
 
+	//tecla esc
+}
 void init()
 {
 	//set the background color to black
-	glClearColor (0.0, 0.0, 0.0, 0.0);
+	glClearColor (0.0, 0.5, 1.0, 0.0);
 
 	//set the draw/fill color to white
 	glColor3f(1.0f, 0.3f, 0.0f);
@@ -142,6 +181,8 @@ void init()
 int main(int argc, char** argv)
 {
 	//set up a session with the window system
+	
+	//printf("Bandeira do Níger\n");
 	glutInit(&argc, argv);
 
 	//use a single frame buffer with red, green,
@@ -157,12 +198,12 @@ int main(int argc, char** argv)
 
 	//When the window appears it has "simple"
 	//on the title bar
-	glutCreateWindow("circle"); 
+	glutCreateWindow("Niger flag"); 
 
 	//register the display callback to be the
 	//function mydisplay
 	glutDisplayFunc(mydisplay);  
-
+	glutKeyboardFunc(keyboard);
 	//initialize OpenGL
 	init();  
 
