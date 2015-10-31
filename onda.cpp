@@ -16,26 +16,15 @@ void RenderSineWave(){
     double ar = w / h;
     int d = -5;
     const float PI=3.14159;
-    float radius = 0.3f;
-    glOrtho( -360 * ar, 390 * ar, -120, 120, -1, 1 );
+    float radius = 14.9f;
+    glOrtho( -360 * ar, 400* ar, -160, 160, -1, 1 );
 
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
     glColor3f(1.0f, 0.3f, 0.0f); //laranja
-    glPushMatrix();
-    glTranslatef(-50.0,40.0,0.0);
-    glBegin(GL_TRIANGLE_FAN);
-		//All triangles fan out starting with this point
-		glVertex2f (0,0);
-		for (int i = 0; i <=361; i++)
-		{				
-				glColor3f(1.0f, 0.3f, 0.0f);
-				glVertex2f(radius * cos(i*PI/180), radius *sin(i*PI/180));
-		}
-	glEnd();
-    glPopMatrix();
     
-    glPushMatrix();
+    
+    /*glPushMatrix();
     glTranslatef(-50.0,-40.0,0.0);
     glBegin(GL_QUADS);
     
@@ -45,7 +34,7 @@ void RenderSineWave(){
     glVertex2f(10,10);
     glEnd();
     glPopMatrix();
-
+    */
     glPointSize(10);
     
     glTranslatef(0.0,60,0.0);
@@ -149,62 +138,102 @@ void RenderSineWave(){
 		glEnd();
 	}
     glPopMatrix();
-    /*glColor3f(1.0f, 0.3f, 0.0f);
-    glTranslatef(-107.0, -5, 0.0);
+    
+    
+    /*float g = 180.0;
+    glColor3f(1.0f, 0.3f, 0.0f);
+   for( int i = 0 ; i < 150; i++){
+		glPushMatrix();
+		glTranslatef(g,17,0.0);
+		g = g + 0.5;
+		//glTranslatef(0,0.0,0.0);
+		glBegin(GL_TRIANGLE_FAN);
+		//All triangles fan out starting with this point
+		glVertex2f (0,0);
+		for (int i = 0; i <=361; i++)
+		{				
+				glColor3f(1.0f, 0.3f, 0.0f);
+				glVertex2f(radius * cos(i*PI/180), radius *sin(i*PI/180));
+		}
+		glEnd();
+		glPopMatrix();
+	}
+	
+	 glPushMatrix();
+	 glTranslatef(30.0,19,0.0);
+		//g = g + 0.5;
+		//glTranslatef(0,0.0,0.0);
+	glBegin(GL_TRIANGLE_FAN);
+		//All triangles fan out starting with this point
+	glVertex2f (0,0);
+	for (int i = 0; i <=361; i++){				
+				glColor3f(1.0f, 0.3f, 0.0f);
+				glVertex2f(radius * cos(20.5*i*PI/180), radius *sin(20.5 *i*PI/180));
+	}
+	glEnd();
+	glPopMatrix();
+	
+	 glPointSize(10);
+    glPushMatrix();
+    glTranslatef(174,29.0,0.0);
+    glBegin(GL_POINTS);
+    for(int i=0;i<80;i=i+2)
+    {
+        float x = (float)i; 
+        float y = 4.9 * sin(i *(8.6/210.0));
+        glVertex2f(x,y);
+    }
+    glEnd();
+    glPopMatrix();
+    
+    */
+    glPushMatrix();
+    //glTranslatef(200,20,0);
+    //glRotated(20,10,0.55,-0.5);
+    //glutSolidSphere(3.9,40,40);
+    //glutSolidTorus(2.3,3.0,12,16);
+    glColor3f(0.6f,0.6f,0.6f);//mastro
+    glTranslatef(0,-5.5,0);
     glBegin(GL_QUADS);
-    glVertex2f(100,140);
-    glVertex2f(100, 100);
-    glVertex2f(110,100);
-    glVertex2f(110,140);
+    glVertex2f(-20,100);
+    glVertex2f(-20,-100);
+    glVertex2f(-6.5,-100);
+    glVertex2f(-6.5,100);
     glEnd();
     
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glTranslatef(0.0, -42, 0.0);
-    glBegin(GL_QUADS);
-    glVertex2f(100,140);
-    glVertex2f(100, 95);
-    glVertex2f(110,95);
-    glVertex2f(110,140);
+    glTranslatef(0, 5.5, 0);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(-13,110);
+    glVertex2f(-20,100);
+    glVertex2f(-6,100);
     glEnd();
     
-    glColor3f(0.137255f, 0.556863f, 0.137255f);
-    glTranslatef(0.0, -50, 0.0);
+    glTranslatef(-12.5,94, 0);
+    glBegin(GL_TRIANGLE_FAN);
+		//All triangles fan out starting with this point
+	glVertex2f (0,0);
+	for (int i = 0; i <=361; i++){				
+				glColor3f(0.6f, 0.6f, 0.6f);
+				glVertex2f(6.1* cos(20.5*i*PI/180), 6.1*sin(20.5 *i*PI/180));
+	}
+	glEnd();
+    
+    
+    glTranslatef(-4,-58,0);
     glBegin(GL_QUADS);
-    glVertex2f(100,140);
-    glVertex2f(100, 95);
-    glVertex2f(110,95);
-    glVertex2f(110,140);
+    glVertex2f(-60,-140);
+    glVertex2f(-40,-150);
+    glVertex2f(40,-150);
+    glVertex2f(60,-140);
     glEnd();
     
-    //glColor3f(0.137255f, 0.556863f, 0.137255f);
-    glTranslatef(453.0, 0, 0.0);
-    glBegin(GL_QUADS);
-    glVertex2f(100,140);
-    glVertex2f(100, 95);
-    glVertex2f(110,95);
-    glVertex2f(110,140);
-    glEnd();
-   
-   glColor3f(1.0f, 1.0f, 1.0f);
-	glTranslatef(0.0, 47.0, 0.0);
-    glBegin(GL_QUADS);
-    glVertex2f(100,140);
-    glVertex2f(100, 96);
-    glVertex2f(110,96);
-    glVertex2f(110,140);
-    glEnd();
-   // glBegin(GL_POINTS);
+    glPopMatrix();
     
-	glColor3f(1.0f, 0.3f, 0.0f);
-	glTranslatef(0.0, 48.0, 0.0);
-    glBegin(GL_QUADS);
-    glVertex2f(100,135);
-    glVertex2f(100,97);
-    glVertex2f(110,97);
-    glVertex2f(110,135);
-    glEnd();*/
+    
     glutSwapBuffers();
 }
+
+
 
 void keyboard(unsigned char key, int x, int y){
 	if(key==27) exit(0);
